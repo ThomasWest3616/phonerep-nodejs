@@ -1,6 +1,5 @@
-import router from "./routers/projects.js";
-import fs from 'fs';
-
+import { create } from 'domain';
+import * as fs from 'fs';
 
 const nav = fs.readFileSync("./public/components/nav/nav.html", "utf8");
 const footer = fs.readFileSync("./public/components/footer/footer.html", "utf8");
@@ -10,3 +9,5 @@ export function createPage(path, options) {
             .replace("%%DOCUMENT_TITLE%%", options?.title || "Nodefolio")
             .replace("%%SCRIPT_PLACEHOLDER%%", options?.scriptTag || "");
 }
+
+export default createPage;
