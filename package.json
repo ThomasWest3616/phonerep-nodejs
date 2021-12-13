@@ -2,9 +2,11 @@
   "name": "phonerep-nodejs",
   "version": "1.0.0",
   "description": "a nodejs project",
+  "type": "module",
   "main": "app.js",
   "dependencies": {
     "express": "^4.17.1",
+    "mysql": "^2.18.1",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15"
   },
