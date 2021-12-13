@@ -1,0 +1,93 @@
+<main class="flex-grow">
+    <div class="my-5 text-center text-2xl font-bold">Login Til Dashboard</div>
+    <form action="/auth_login" method="POST" class="w-full max-w-lg mx-auto">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="grid-first-name"
+          >
+            Username
+          </label>
+          <input
+            id="username"
+            name="username"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              rounded
+              py-3
+              px-4
+              mb-3
+              leading-tight
+              focus:outline-none focus:bg-white
+            "
+            id="grid-first-name"
+            type="text"
+            placeholder="Jane"
+          />
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label
+            class="
+              block
+              uppercase
+              tracking-wide
+              text-gray-700 text-xs
+              font-bold
+              mb-2
+            "
+            for="grid-last-name"
+          >
+            Password
+          </label>
+          <input
+            id="Password"
+            name="password"
+            class="
+              appearance-none
+              block
+              w-full
+              bg-gray-200
+              text-gray-700
+              border border-gray-200
+              rounded
+              py-3
+              px-4
+              leading-tight
+              focus:outline-none focus:bg-white focus:border-gray-500
+            "
+            id="grid-last-name"
+            type="password"
+            placeholder="password"
+          />
+        </div>
+      </div>
+      <button
+        id="submit-button"
+        class="
+          text-center text-indigo-400
+          font-bold
+          rounded
+          py-2
+          w-2/12
+          focus:outline-none
+          bg-gray-900
+          border-2 border-indigo-400
+        "
+      >
+        Login
+      </button>
+    </form>
+
+    </main>
