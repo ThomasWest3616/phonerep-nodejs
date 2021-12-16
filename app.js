@@ -3,14 +3,9 @@ import contact from "./routers/contact.js"
 import session from 'express-session';
 import { connection } from './database.js';
 import phoneModelsRouter from './routers/phonemodels.js'
+import { createPage } from './render.js';
 
 const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(express.static("public"));
-app.use(contact);
-app.use(phoneModelsRouter);
-
 
 app.use(session({
   secret: '2C44-4D44-WppQ38S',
@@ -18,7 +13,12 @@ app.use(session({
   saveUninitialized: true
 }));
 
-import { createPage } from './render.js';
+app.use(express.static("public"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(contact);
+app.use(phoneModelsRouter);
+
 
 const frontpagePage = createPage("frontpage/index.html", {
   title: "Phone-Rep | Welcome"
@@ -71,7 +71,7 @@ app.get('/login', function (req, res) {
 app.get('/admin', function (request, response) {
 
   response.send(adminPage);
-  
+
   // if (request.session.loggedin) {
   //   response.send(adminPage);
   // } else {
@@ -83,7 +83,7 @@ app.get('/admin', function (request, response) {
 app.get('/phonemodel', function (request, response) {
 
   response.send(phoneModelPage);
-  
+
   // if (request.session.loggedin) {
   //   response.send(adminPage);
   // } else {

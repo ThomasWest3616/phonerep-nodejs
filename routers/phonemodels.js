@@ -5,18 +5,19 @@ const app = express();
 
 router.use(express.json())
 
-router.get("/getphonemodels", (req, res) => {
+router.get("/phonemodels", (req, res) => {
     connection.query('SELECT * FROM phonemodel', function (error, results, fields) {
         if (error) throw error;
         res.send(results)
     },
 
     )
-}); 
+});
 
 
 router.get('/delete/:id', (req, res) => {
-    connection.query('DELETE FROM phonemodel WHERE id = ?', [req.params.id], (err, rows, fields) => {
+    const id = req.params.id;
+    connection.query(`DELETE FROM phonemodel WHERE phonemodelid = ${id}`, [req.params.id], (err, rows, fields) => {
         if (!err)
             res.redirect('/admin');
         else
@@ -26,9 +27,9 @@ router.get('/delete/:id', (req, res) => {
 
 
 
- router.post('/update', (req, res) => {
-    const projectId = req.body.id;
-    let sql = "update phonemodel SET model='" + req.body.model + "' where id =" + phonemodelId;
+router.post('/update', (req, res) => {
+    const phoneModelId = req.body.id;
+    let sql = "update phonemodel SET model='" + req.body.model + "' where phonemodelid =" + phoneModelId;
     connection.query(sql, (err, results) => {
         if (err) throw err;
         console.log("Phone model updated");

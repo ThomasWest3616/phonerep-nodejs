@@ -1,14 +1,14 @@
 (async () => {
-    let response = await fetch("/phonemodels");
-    let phonemodels = await response.json();
-  
-    const phonemodelsWrapperDiv = document.getElementById("phonemodels-wrapper");
-  
-    phonemodels.map(phonemodel => {
-        const phonemodelDiv = document.createElement("div");
-        phonemodelDiv.innerHTML = `
+  let response = await fetch("/phonemodels");
+  let phonemodels = await response.json();
+
+  const phonemodelsWrapperDiv = document.getElementById("phonemodels-wrapper");
+
+  phonemodels.map(phonemodel => {
+    const phonemodelDiv = document.createElement("div");
+    phonemodelDiv.innerHTML = `
         <form action="/update" method="post" class="w-full max-w-lg mx-auto">
-        <input type="hidden" value=${phonemodel.id} name="id">
+        <input type="hidden" value=${phonemodel.phonemodelid} name="id">
     <div class="flex flex-wrap -mx-3 mb-6">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label
@@ -38,8 +38,8 @@
             leading-tight
             focus:outline-none focus:bg-white
           "
-          value=${phonemodel.name}
-          name="name"
+          value=${phonemodel.model}
+          name="model"
           class=""
           type="text"
         />
@@ -74,42 +74,9 @@
           "
           id="grid-last-name"
           name="description"
-          value=${phonemodel.description}
+          value=${phonemodel.img}
           class=""
           type="text"
-        />
-      </div>
-      <div class="w-full md:w-1/2 px-3">
-        <label
-          class="
-            block
-            uppercase
-            tracking-wide
-            text-gray-700 text-xs
-            font-bold
-            mb-2
-          "
-          for="grid-last-name"
-        >
-          linknology
-        </label>
-        <input
-          class="
-            appearance-none
-            block
-            w-full
-            bg-gray-200
-            text-gray-700
-            border border-gray-200
-            rounded
-            py-3
-            px-4
-            leading-tight
-            focus:outline-none focus:bg-white focus:border-gray-500
-          "
-          name="link"
-          type="text"
-          value=${phonemodel.link}
         />
       </div>
     </div>
@@ -132,7 +99,7 @@
   
         <form
         class="mt-5"
-        action="/delete/${phonemodel.id}"
+        action="/delete/${phonemodel.phonemodelid}"
         method="get">
   
         <button
@@ -155,10 +122,10 @@
         <br/><br/>
         
     `;
-  
-        phonemodelsWrapperDiv.appendChild(phonemodelDiv);
-  
-    });
-  
-  
-  })();
+
+    phonemodelsWrapperDiv.appendChild(phonemodelDiv);
+
+  });
+
+
+})();
