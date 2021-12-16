@@ -2,12 +2,15 @@ import express from 'express';
 import contact from "./routers/contact.js"
 import session from 'express-session';
 import { connection } from './database.js';
+import phoneModelsRouter from './routers/phonemodels.js'
 
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use(contact);
+app.use(phoneModelsRouter);
+
 
 app.use(session({
   secret: '2C44-4D44-WppQ38S',
@@ -36,7 +39,11 @@ const loginPage = createPage("loginpage/login.html", {
 });
 
 const adminPage = createPage("adminpage/admin.html", {
-  title: "Phone-Rep | Login"
+  title: "Phone-Rep | Admin"
+});
+
+const phoneModelPage = createPage("phonemodelPage/phonemodel.html", {
+  title: "Phone-Rep | Admin"
 });
 
 app.get("/contact", (req, res) => {
@@ -62,13 +69,29 @@ app.get('/login', function (req, res) {
 });
 
 app.get('/admin', function (request, response) {
-  if (request.session.loggedin) {
-    response.send(adminPage);
-  } else {
-    response.send(loginPage);
-  }
-  response.end();
+
+  response.send(adminPage);
+  
+  // if (request.session.loggedin) {
+  //   response.send(adminPage);
+  // } else {
+  //   response.send(loginPage);
+  // }
+  // response.end();
 });
+
+app.get('/phonemodel', function (request, response) {
+
+  response.send(phoneModelPage);
+  
+  // if (request.session.loggedin) {
+  //   response.send(adminPage);
+  // } else {
+  //   response.send(loginPage);
+  // }
+  // response.end();
+});
+
 
 app.post('/auth_login', function (request, response) {
   var username = request.body.username;
