@@ -46,6 +46,10 @@ const phoneModelPage = createPage("phonemodelPage/phonemodel.html", {
   title: "Phone-Rep | Admin"
 });
 
+const iphone5Page = createPage("iphone5Page/iphone5.html", {
+  title: "Phone-Rep | iPhone 5"
+});
+
 app.get("/contact", (req, res) => {
   res.send(contactPage);
 });
@@ -66,6 +70,10 @@ app.get('/shops', function (req, res) {
 
 app.get('/login', function (req, res) {
   res.send(loginPage)
+});
+
+app.get('/iphone5', function (req, res) {
+  res.send(iphone5Page)
 });
 
 app.get('/admin', function (request, response) {
