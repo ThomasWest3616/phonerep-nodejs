@@ -9,6 +9,32 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.2/tailwind.min.css"
       rel="stylesheet"
     />
+    <style>
+      body {
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        width: 90%;
+        max-width: 1200px;
+      }
+
+      #message-container {
+        border: 1px solid black;
+        flex-grow: 1;
+        overflow-y: auto;
+      }
+
+      #message-container div {
+        background-color: #ccc;
+        padding: 5px;
+      }
+
+      #message-container div:nth-child(2n) {
+        background-color: #fff;
+        padding: 5px;
+      }
+    </style>
     <script src="../assets/lib/escapeHTML.js"></script>
     %%SCRIPT_PLACEHOLDER%%
     <title>%%DOCUMENT_TITLE%%</title>

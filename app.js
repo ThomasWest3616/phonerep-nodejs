@@ -24,6 +24,10 @@ const frontpagePage = createPage("frontpage/index.html", {
   title: "Phone-Rep | Welcome"
 });
 
+const supportPage = createPage("supportpage/support.html", {
+  title: "Phone-Rep | Support"
+});
+
 const contactPage = createPage("contact/contact.html");
 
 const repairPage = createPage("repairspage/repair.html", {
@@ -57,6 +61,10 @@ app.get("/contact", (req, res) => {
 
 app.get('/', function (req, res) {
   res.send(frontpagePage)
+});
+
+app.get('/support', function (req, res) {
+  res.send(supportPage)
 });
 
 app.get('/repairs', function (req, res) {
