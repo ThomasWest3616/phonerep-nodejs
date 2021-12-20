@@ -128,7 +128,7 @@ app.get('/logout', function (req, res) {
   res.send("logout success!");
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, (error) => {
   console.log("Server is running on", PORT);
