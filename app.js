@@ -19,7 +19,11 @@ app.use(session({
   saveUninitialized: true
 }));
 
-const io = new Server(server);
+const io = new Server(3000, {
+  cors: {
+    origin: ['http://localhost:8000'],
+  }
+});
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -155,26 +159,22 @@ server.listen(PORT, (error) => {
 io.on("connection", socket => {
   console.log(socket.id)
   socket.on('send-message', (message, room) => {
-    // if (room === '') {
-    //   socket.broadcast.emit("recieve-message", message)
-    // } else {
-    //   socket.to(room).emit("recieve-message", message)
-    // }
+    if (room === '') {
+      socket.broadcast.emit("recieve-message", message)
+    } else {
+      socket.to(room).emit("recieve-message", message)
+    }
 
-    socket.on("a client choose a color", (color) => {
-
-      io.emit("the server is sending the new color", escapeHTML(color));
-    });
 
   })
 
-  // socket.on('join-room', (room, cb) => {
-  //   socket.join(room)
+  socket.on('join-room', (room, cb) => {
+    socket.join(room)
 
-  //   cb(`Joined ${room}`)
-  // })
+    cb(`Joined ${room}`)
+  })
 })
 
 app.get("/support", (req, res) => {
-  res.sendFile(path.resolve() + "/public/colors.html");
+  res.sendFile(path.resolve() + "/public/pages/supportpage/colors.html");
 });
