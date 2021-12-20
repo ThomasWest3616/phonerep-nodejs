@@ -5,15 +5,21 @@ import { connection } from './database.js';
 import phoneModelsRouter from './routers/phonemodels.js'
 import { createPage } from './render.js';
 import { Server } from "socket.io";
-// import { createServer } from "http";
+import path from "path";
+import escapeHTML from "escape-html";
+
+import http from "http";
 
 const app = express();
+const server = http.createServer(app);
 
 app.use(session({
   secret: '2C44-4D44-WppQ38S',
   resave: true,
   saveUninitialized: true
 }));
+
+const io = new Server(server);
 
 app.use(express.static("public"));
 app.use(express.json());
@@ -51,6 +57,10 @@ const phoneModelPage = createPage("phonemodelPage/phonemodel.html", {
 const iphone5Page = createPage("iphone5Page/iphone5.html", {
   title: "Phone-Rep | iPhone 5"
 });
+
+// const supportpage = createPage("supportpage/index.html", {
+//   title: "Phone-Rep | support"
+// });
 
 app.get("/contact", (req, res) => {
   res.send(contactPage);
@@ -130,39 +140,41 @@ app.get('/logout', function (req, res) {
 
 const PORT = process.env.PORT || 8000;
 
-app.listen(PORT, (error) => {
+server.listen(PORT, (error) => {
   console.log("Server is running on", PORT);
 });
 
 // const httpServer = createServer();
-const io = new Server(3000, {
-  cors: {
-    origin: ['http://localhost:8080'],
-  }
-})
-
-// const test = (3000, {
+// const io = new Server(3000, {
 //   cors: {
-//     origin: ['http://localhost:8080'],
+//     origin: ['http://localhost:8000'],
 //   }
 // })
+
 
 io.on("connection", socket => {
   console.log(socket.id)
   socket.on('send-message', (message, room) => {
-    // socket.broadcast.emit("recieve-message", message)
+    // if (room === '') {
+    //   socket.broadcast.emit("recieve-message", message)
+    // } else {
+    //   socket.to(room).emit("recieve-message", message)
+    // }
 
-    if (room === '') {
-      socket.broadcast.emit("recieve-message", message)
-    } else {
-      socket.to(room).emit("recieve-message", message)
-    }
+    socket.on("a client choose a color", (color) => {
+
+      io.emit("the server is sending the new color", escapeHTML(color));
+    });
 
   })
 
-  socket.on('join-room', (room, cb) => {
-    socket.join(room)
+  // socket.on('join-room', (room, cb) => {
+  //   socket.join(room)
 
-    cb(`Joined ${room}`)
-  })
+  //   cb(`Joined ${room}`)
+  // })
 })
+
+app.get("/support", (req, res) => {
+  res.sendFile(path.resolve() + "/public/colors.html");
+});
