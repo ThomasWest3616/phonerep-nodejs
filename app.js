@@ -4,6 +4,8 @@ import session from 'express-session';
 import { connection } from './database.js';
 import phoneModelsRouter from './routers/phonemodels.js'
 import { createPage } from './render.js';
+import { Server } from "socket.io";
+// import { createServer } from "http";
 
 const app = express();
 
@@ -132,3 +134,35 @@ app.listen(PORT, (error) => {
   console.log("Server is running on", PORT);
 });
 
+// const httpServer = createServer();
+const io = new Server(3000, {
+  cors: {
+    origin: ['http://localhost:8080'],
+  }
+})
+
+// const test = (3000, {
+//   cors: {
+//     origin: ['http://localhost:8080'],
+//   }
+// })
+
+io.on("connection", socket => {
+  console.log(socket.id)
+  socket.on('send-message', (message, room) => {
+    // socket.broadcast.emit("recieve-message", message)
+
+    if (room === '') {
+      socket.broadcast.emit("recieve-message", message)
+    } else {
+      socket.to(room).emit("recieve-message", message)
+    }
+
+  })
+
+  socket.on('join-room', (room, cb) => {
+    socket.join(room)
+
+    cb(`Joined ${room}`)
+  })
+})
