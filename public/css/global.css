@@ -4,3 +4,27 @@
     height: auto;
     margin-bottom: 100px;
 }
+
+.pricelistTable {
+    padding: 0;
+    margin: auto;
+    border-collapse: collapse;
+    width: 80%;
+    text-align: center;
+    color: whitesmoke;
+    }
+    .pricelistTableHeaderRow {
+    color: darkorange;
+    font-weight: bold;
+    height: 50px;
+    }
+    .pricelistTableBodyRow:nth-child(odd){background-color: rgba(128, 128, 128, 0.050);}
+    #latestUserScore {
+    background-color: crimson;
+    }
+    .pricelistTableBodyRow:hover{
+    background-color: darkorange;
+    }
+    .pricelistTable tr td {
+    height: 25px;
+    }

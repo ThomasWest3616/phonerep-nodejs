@@ -4,6 +4,7 @@ import session from 'express-session';
 import { connection } from './database.js';
 import phoneModelsRouter from './routers/phonemodels.js'
 import { createPage } from './render.js';
+import priceListRouter from './routers/pricelist.js'
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(contact);
 app.use(phoneModelsRouter);
+app.use(priceListRouter);
 
 
 const frontpagePage = createPage("frontpage/index.html", {
