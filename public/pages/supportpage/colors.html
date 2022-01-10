@@ -1,0 +1,88 @@
+<main class="flex-grow">
+  <div id="message-container"></div>
+  <form id="form">
+    <label for="message-input">Besked</label>
+
+    <input type="text" id="message-input" />
+
+    <button type="submit" id="send-button">Send</button>
+
+    <label for="room-input">Room</label>
+
+    <input type="text" id="room-input" />
+
+    <button type="button" id="room-button">Join</button>
+  </form>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const joinRoomButton = document.getElementById("room-button");
+    const messageInput = document.getElementById("message-input");
+    const roomInput = document.getElementById("room-input");
+    const form = document.getElementById("form");
+
+    const socket = io("http://localhost:3000");
+    socket.on("connect", () => {
+      displayMessage(`You connected with id: ${socket.id}`);
+    });
+
+    socket.on("recieve-message", (message) => {
+      displayMessage(message);
+    });
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const message = messageInput.value;
+      const room = roomInput.value;
+
+      if (message === "") return;
+      displayMessage(message);
+
+      socket.emit("send-message", message, room);
+
+      messageInput.value = "";
+    });
+
+    joinRoomButton.addEventListener("click", () => {
+      const room = roomInput.value;
+      socket.emit("join-room", room, (message) => {
+        displayMessage(message);
+      });
+    });
+
+    function displayMessage(message) {
+      const div = document.createElement("div");
+      div.textContent = message;
+      document.getElementById("message-container").append(div);
+    }
+  </script>
+</main>
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Colorful</title>
+  </head>
+  <body>
+    <input id="input-colors" type="color" />
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io();
+
+      document
+        .getElementById("input-colors")
+        .addEventListener("change", submitColor);
+
+      function submitColor(event) {
+        socket.emit("a client choose a color", event.target.value);
+      }
+
+      socket.on("the server is sending the new color", (color) => {
+        document.body.style.backgroundColor = color;
+      });
+    </script>
+  </body>
+</html> -->
