@@ -68,6 +68,16 @@ const iphone5Page = createPage("iphone5Page/iphone5.html", {
   title: "Phone-Rep | iPhone 5"
 });
 
+const iphone6Page = createPage("iphone6Page/iphone6.html", {
+  title: "Phone-Rep | iPhone 6"
+});
+
+const iphone7Page = createPage("iphone7Page/iphone7.html", {
+  title: "Phone-Rep | iPhone 7"
+});
+
+
+
 app.get("/contact", (req, res) => {
   res.send(contactPage);
 });
@@ -92,6 +102,15 @@ app.get('/login', function (req, res) {
 
 app.get('/iphone5', function (req, res) {
   res.send(iphone5Page)
+});
+
+
+app.get('/iphone6', function (req, res) {
+  res.send(iphone6Page)
+});
+
+app.get('/iphone7', function (req, res) {
+  res.send(iphone7Page)
 });
 
 app.get('/editprices', function (req, res) {
