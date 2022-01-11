@@ -1,32 +1,43 @@
-const urls = [
-    "http://localhost:8080/getiphone5"
-];
+const url = "http://localhost:8080/getiphone5"
 
-async function fetchAll() {
-    const results = await Promise.all(urls.map((url) => fetch(url).then((r) => r.json())));
+fetch(url)
+    .then(
+        function (response) {
+            if (response.status !== 200) {
+                console.warn('Looks like there was a problem. Status Code: ' +
+                    response.status);
+                return;
+            }
 
-    results.map((test) => console.log(test.map((test2) => test2.title)))
+            // Examine the text in the response  
+            response.json().then(function (data) {
 
-    console.log(JSON.stringify(results, null, 2));
+                var table = document.createElement("table"), row, cellA, cellB, cellC, cellD, header
+                document.getElementById("demoB").appendChild(table);
 
-    var table = document.createElement("table"), row, cellA, cellB, cellC, cellD, header
-    document.getElementById("demoB").appendChild(table);
+                for (let key in data) {
+                    // (C2) ROWS & CELLS
+                    row = document.createElement("tr");
+                    header = document.createElement("th");
+                    cellA = document.createElement("td");
+                    cellB = document.createElement("td");
+                    cellC = document.createElement("td");
 
-    for (let i = 0; i < results.length; i++) {
-        // (C2) ROWS & CELLS
-        row = document.createElement("tr");
-        header = document.createElement("th");
-        cellA = document.createElement("td");
-        cellB = document.createElement("td");
-        cellC = document.createElement("td");
+                    // (C3) KEY & VALUE
+                    cellA.innerHTML = data[key].title;
+                    cellB.innerHTML = data[key].time;
+                    cellC.innerHTML = data[key].price
 
-        // (C3) KEY & VALUE
-        results[0].map((test) => cellA.innerHTML = test.title)
 
-        // (C4) ATTACH ROW & CELLS
-        table.appendChild(row).style.width = "500px"
-        row.appendChild(cellA).style.width = "500px"
-    }
-}
-
-fetchAll();
+                    // (C4) ATTACH ROW & CELLS
+                    table.appendChild(row).style.width = "500px"
+                    row.appendChild(cellA).style.width = "500px"
+                    row.appendChild(cellB).style.width = "500px"
+                    row.appendChild(cellC).style.width = "500px"
+                }
+            });
+        }
+    )
+    .catch(function (err) {
+        console.error('Fetch Error -', err);
+    });
