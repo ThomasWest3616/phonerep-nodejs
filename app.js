@@ -44,6 +44,22 @@ const adminPage = createPage("adminpage/admin.html", {
   title: "Phone-Rep | Admin"
 });
 
+const pricePage = createPage("pricepage/editprices.html", {
+  title: "Phone-Rep | Edit Prices"
+});
+
+const editIphone5Page = createPage("pricepage/editiphone5.html", {
+  title: "Phone-Rep | iPhone 5 Edit Prices"
+});
+
+const editIphone6Page = createPage("pricepage/editiphone6.html", {
+  title: "Phone-Rep | iPhone 6 Edit Prices"
+});
+
+const editIphone7Page = createPage("pricepage/editiphone7.html", {
+  title: "Phone-Rep | iPhone 7 Edit Prices"
+});
+
 const phoneModelPage = createPage("phonemodelPage/phonemodel.html", {
   title: "Phone-Rep | Admin"
 });
@@ -76,6 +92,22 @@ app.get('/login', function (req, res) {
 
 app.get('/iphone5', function (req, res) {
   res.send(iphone5Page)
+});
+
+app.get('/editprices', function (req, res) {
+  res.send(pricePage)
+});
+
+app.get('/editiphone5', function (req, res) {
+  res.send(editIphone5Page)
+});
+
+app.get('/editiphone6', function (req, res) {
+  res.send(editIphone6Page)
+});
+
+app.get('/editiphone7', function (req, res) {
+  res.send(editIphone7Page)
 });
 
 app.get('/admin', function (request, response) {
