@@ -47,7 +47,7 @@ router.get('/delete/:id', (req, res) => {
     const id = req.params.id;
     connection.query(`DELETE FROM pricelist WHERE pricelistid = ${id}`, [req.params.id], (err, rows, fields) => {
         if (!err)
-            res.redirect('/admin');
+            res.redirect('/editiphone5');
         else
             console.log(err);
     })
@@ -66,17 +66,42 @@ router.post('/update', (req, res) => {
 });
 
 
-
-
-router.post('/createPhone', function (req, res) {
-    var name = req.body.name;
-    var description = req.body.description;
-    var link = req.body.link;
-    connection.query("INSERT INTO pricelist (model, img) VALUES (?, ?)", [model.toString(), img.toString()], function (err, result) {
+router.post('/createiPhone5price', function (req, res) {
+    var title = req.body.title;
+    var time = req.body.time;
+    var price = req.body.price;
+    var phonemodelid = req.body.phonemodelid;
+    connection.query("INSERT INTO pricelist (title, time, price, phonemodelid) VALUES (?, ?, ?, 1)", [title.toString(), time.toString(), price.toString()], function (err, result) {
         if (err) throw err;
-        console.log("New phone model added");
+        console.log("New price added");
     });
-    res.redirect("/admin");
+    res.redirect("/editiphone5");
+    res.end()
+});
+
+router.post('/createiPhone6price', function (req, res) {
+    var title = req.body.title;
+    var time = req.body.time;
+    var price = req.body.price;
+    var phonemodelid = req.body.phonemodelid;
+    connection.query("INSERT INTO pricelist (title, time, price, phonemodelid) VALUES (?, ?, ?, 2)", [title.toString(), time.toString(), price.toString()], function (err, result) {
+        if (err) throw err;
+        console.log("New price added");
+    });
+    res.redirect("/editiphone6");
+    res.end()
+});
+
+router.post('/createiPhone7price', function (req, res) {
+    var title = req.body.title;
+    var time = req.body.time;
+    var price = req.body.price;
+    var phonemodelid = req.body.phonemodelid;
+    connection.query("INSERT INTO pricelist (title, time, price, phonemodelid) VALUES (?, ?, ?, 3)", [title.toString(), time.toString(), price.toString()], function (err, result) {
+        if (err) throw err;
+        console.log("New price added");
+    });
+    res.redirect("/editiphone7");
     res.end()
 });
 
