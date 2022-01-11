@@ -9,7 +9,7 @@
     phonemodelDiv.innerHTML = `
         <form action="/update" method="post" class="w-full max-w-lg mx-auto">
         <input type="hidden" value=${phonemodel.phonemodelid} name="id">
-    <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="flex flex-wrap -mx-3 mb-6 mt-10">
       <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
         <label
           class="
@@ -80,17 +80,23 @@
         />
       </div>
     </div>
+    
+    <div class="w-full flex justify-center pt-5">
     <button
       class="
-        bg-blue-500
-        hover:bg-blue-700
-        text-white text-xl
-        font-bold
-        py-4
-        px-4
-        rounded
-        w-64
-        focus:outline-none focus:shadow-outline
+      bg-blue-500
+      hover:bg-blue-700
+      text-white text-xl
+      font-bold
+      py-4
+      px-4
+      mt-5
+      mr-2
+      mb-5
+      rounded
+      w-full
+      h-full
+      focus:outline-none focus:shadow-outline
       "
     >
       Update
@@ -117,7 +123,7 @@
             Delete
         </button> 
         </form>
-  
+  </div>
         
         <br/><br/>
         
