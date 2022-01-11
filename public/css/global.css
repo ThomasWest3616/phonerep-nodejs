@@ -28,3 +28,15 @@
     .pricelistTable tr td {
     height: 25px;
     }
+
+    .iphone5img {
+        transform: scaleX(-1);
+        width: full;
+        height: 800px;
+        margin-right: 200px;
+    }
+
+    .tableheaders {
+        margin-right: 285px;
+        margin-left: 215px;
+    }
