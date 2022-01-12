@@ -118,20 +118,45 @@ app.get('/iphone7', function (req, res) {
   res.send(iphone7Page)
 });
 
-app.get('/editprices', function (req, res) {
-  res.send(pricePage)
+app.get('/editprices', function (request, response) {
+  
+  if (request.session.loggedin) {
+    response.send(pricePage);
+  } else {
+    response.send(loginPage);
+  }
+  response.end();
+  
 });
 
-app.get('/editiphone5', function (req, res) {
-  res.send(editIphone5Page)
+app.get('/editiphone5', function (request, response) {
+  
+  if (request.session.loggedin) {
+    response.send(editIphone5Page);
+  } else {
+    response.send(loginPage);
+  }
+  response.end();
 });
 
-app.get('/editiphone6', function (req, res) {
-  res.send(editIphone6Page)
+
+
+app.get('/editiphone6', function (request, response) {
+  if (request.session.loggedin) {
+    response.send(editIphone6Page);
+  } else {
+    response.send(loginPage);
+  }
+  response.end();
 });
 
-app.get('/editiphone7', function (req, res) {
-  res.send(editIphone7Page)
+app.get('/editiphone7', function (request, response) {
+  if (request.session.loggedin) {
+    response.send(editIphone7Page);
+  } else {
+    response.send(loginPage);
+  }
+  response.end();
 });
 
 app.get('/support', function (req, res) {
@@ -140,26 +165,23 @@ app.get('/support', function (req, res) {
 
 app.get('/admin', function (request, response) {
 
-  response.send(adminPage);
 
-  // if (request.session.loggedin) {
-  //   response.send(adminPage);
-  // } else {
-  //   response.send(loginPage);
-  // }
-  // response.end();
+  if (request.session.loggedin) {
+     response.send(adminPage);
+   } else {
+     response.send(loginPage);
+  }
+  response.end();
 });
 
 app.get('/phonemodel', function (request, response) {
 
-  response.send(phoneModelPage);
-
-  // if (request.session.loggedin) {
-  //   response.send(adminPage);
-  // } else {
-  //   response.send(loginPage);
-  // }
-  // response.end();
+  if (request.session.loggedin) {
+     response.send(phoneModelPage);
+   } else {
+     response.send(loginPage);
+   }
+   response.end();
 });
 
 
