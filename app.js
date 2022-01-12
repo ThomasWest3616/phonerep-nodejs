@@ -5,6 +5,7 @@ import { connection } from './database.js';
 import phoneModelsRouter from './routers/phonemodels.js'
 import { createPage } from './render.js';
 import priceListRouter from './routers/pricelist.js'
+import { Server } from "socket.io";
 
 const app = express();
 
@@ -76,6 +77,10 @@ const iphone7Page = createPage("iphone7Page/iphone7.html", {
   title: "Phone-Rep | iPhone 7"
 });
 
+const supportPage = createPage("support/support.html", {
+  title: "Phone-Rep | Support"
+});
+
 
 
 app.get("/contact", (req, res) => {
@@ -129,6 +134,10 @@ app.get('/editiphone7', function (req, res) {
   res.send(editIphone7Page)
 });
 
+app.get('/support', function (req, res) {
+  res.send(supportPage)
+});
+
 app.get('/admin', function (request, response) {
 
   response.send(adminPage);
@@ -179,9 +188,36 @@ app.get('/logout', function (req, res) {
   res.send("logout success!");
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, (error) => {
   console.log("Server is running on", PORT);
 });
+
+const io = new Server(3000, {
+  cors: {
+    origin: ['http://localhost:8080'],
+  }
+})
+
+
+io.on("connection", socket => {
+  console.log(socket.id)
+  socket.on('send-message', (message, room) => {
+    // socket.broadcast.emit("recieve-message", message)
+
+    if (room === '') {
+      socket.broadcast.emit("recieve-message", message)
+    } else {
+      socket.to(room).emit("recieve-message", message)
+    }
+
+  })
+
+  socket.on('join-room', (room, cb) => {
+    socket.join(room)
+
+    cb(`Joined ${room}`)
+  })
+})
 

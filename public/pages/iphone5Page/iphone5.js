@@ -57,7 +57,7 @@
     }
 
 const getPrices = () => {
-    fetch('http://localhost:8080/getiphone5')
+    fetch('http://localhost:8000/getiphone5')
     .then(res => res.json())
     .then(scores => {
         createPricelistTable()

@@ -1,4 +1,4 @@
-const url = "http://localhost:8080/getiphone5"
+const url = "http://localhost:8000/getiphone5"
 
 fetch(url)
     .then(

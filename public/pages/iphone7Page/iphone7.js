@@ -19,16 +19,16 @@ const createPricelistTable = () => {
         priceHeader.innerText = header
         pricelistTableHeaderRow.append(priceHeader)
 
-    }) 
+    })
 
-pricelistTableHead.append(pricelistTableHeaderRow)
-pricelistTable.append(pricelistTableHead)
+    pricelistTableHead.append(pricelistTableHeaderRow)
+    pricelistTable.append(pricelistTableHead)
 
-let pricelistTableBody = document.createElement('tbody')
-pricelistTableBody.className = "pricelistTable-Body"
-pricelistTable.append(pricelistTableBody)
+    let pricelistTableBody = document.createElement('tbody')
+    pricelistTableBody.className = "pricelistTable-Body"
+    pricelistTable.append(pricelistTableBody)
 
-pricelistDiv.append(pricelistTable)
+    pricelistDiv.append(pricelistTable)
 
 
 
@@ -57,14 +57,14 @@ const appendPrices = (singlePrice, singlePriceIndex) => {
 }
 
 const getPrices = () => {
-fetch('http://localhost:8080/getiphone6')
-.then(res => res.json())
-.then(scores => {
-    createPricelistTable()
+    fetch('http://localhost:8000/getiphone6')
+        .then(res => res.json())
+        .then(scores => {
+            createPricelistTable()
 
-    for (const price of prices) {
-        let priceIndex = prices.indexOf(price) + 1
-        appendPrices(price, priceIndex)
-    }
-})
+            for (const price of prices) {
+                let priceIndex = prices.indexOf(price) + 1
+                appendPrices(price, priceIndex)
+            }
+        })
 }
