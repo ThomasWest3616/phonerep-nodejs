@@ -1,4 +1,5 @@
-<div class="admin-container">
+<main class="flex-grow">
+  <div class="admin-container">
     <h1 class="text-center text-5xl">Admin Dashboard</h1>
 
     <div class="flex justify-center pt-10 text-xl">
@@ -8,148 +9,79 @@
     </div>
 
     <div class="flex justify-center pt-10 text-xl mb-10">
-        <a class="pr-5" href="/editiphone5">iPhone 5</a>
-        <a class="pr-5" href="/editiphone6">iPhone 6</a>
-        <a class="pr-5" href="/editiphone7">iPhone 7</a>
-        <a class="pr-5" href="/editiphone8">iPhone 8</a>
-        <a class="pr-5" href="/editiphonex">iPhone X</a>
-        <a class="pr-5" href="/editiphonexs">iPhone XS</a>
-        <a class="pr-5" href="/editiphone11">iPhone 11</a>
-        <a href="/editiphone11pro">iPhone 11 Pro</a>
+      <a class="pr-5" href="/editiphone5">iPhone 5</a>
+      <a class="pr-5" href="/editiphone6">iPhone 6</a>
+      <a class="pr-5" href="/editiphone7">iPhone 7</a>
+      <a class="pr-5" href="/editiphone8">iPhone 8</a>
+      <a class="pr-5" href="/editiphonex">iPhone X</a>
+      <a class="pr-5" href="/editiphonexs">iPhone XS</a>
+      <a class="pr-5" href="/editiphone11">iPhone 11</a>
+      <a href="/editiphone11pro">iPhone 11 Pro</a>
     </div>
-    <div id="pricelists-wrapper"> </div>
+    <div id="pricelists-wrapper"></div>
 
     <div>
-        <div class="text-center text-xl font-bold mb-5">Add New Price</div>
-        <form
-          action="/createiPhone5price"
-          method="post"
-          class="w-full max-w-lg mx-auto"
-        >
-          <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-              <label
-                class="
-                  block
-                  uppercase
-                  tracking-wide
-                  text-gray-700 text-xs
-                  font-bold
-                  mb-2
-                "
-                for="grid-first-name"
-              >
-                Repair Name
-              </label>
-              <input
-                class="
-                  appearance-none
-                  block
-                  w-full
-                  bg-gray-200
-                  text-gray-700
-                  rounded
-                  py-3
-                  px-4
-                  mb-3
-                  leading-tight
-                  focus:outline-none focus:bg-white
-                "
-                name="title"
-                class=""
-                type="text"
-                placeholder="Repair Type"
-              />
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-              <label
-                class="
-                  block
-                  uppercase
-                  tracking-wide
-                  text-gray-700 text-xs
-                  font-bold
-                  mb-2
-                "
-                for="grid-last-name"
-              >
-                Time
-              </label>
-              <input
-                class="
-                  appearance-none
-                  block
-                  w-full
-                  bg-gray-200
-                  text-gray-700
-                  border border-gray-200
-                  rounded
-                  py-3
-                  px-4
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-gray-500
-                "
-                id="grid-last-name"
-                name="time"
-                class=""
-                type="text"
-                placeholder="Repair Time"
-              />
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-              <label
-                class="
-                  block
-                  uppercase
-                  tracking-wide
-                  text-gray-700 text-xs
-                  font-bold
-                  mb-2
-                "
-                for="grid-last-name"
-              >
-                Price
-              </label>
-              <input
-                class="
-                  appearance-none
-                  block
-                  w-full
-                  bg-gray-200
-                  text-gray-700
-                  border border-gray-200
-                  rounded
-                  py-3
-                  px-4
-                  leading-tight
-                  focus:outline-none focus:bg-white focus:border-gray-500
-                "
-                name="price"
-                type="text"
-                placeholder="Repair Price"
-              />
-            </div>
+      <div class="text-center text-xl font-bold mb-5">Add New Price</div>
+      <form
+        action="/createiPhone5price"
+        method="post"
+        class="w-full max-w-lg mx-auto"
+      >
+        <div class="flex flex-wrap -mx-3 mb-6">
+          <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-first-name"
+            >
+              Repair Name
+            </label>
+            <input
+              class="appearance-none block w-full bg-gray-200 text-gray-700 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
+              name="title"
+              class=""
+              type="text"
+              placeholder="Repair Type"
+            />
           </div>
-          <button
-            class="
-              bg-green-500
-              hover:bg-green-700
-              text-white
-              font-bold
-              py-2
-              px-4
-              rounded
-              focus:outline-none focus:shadow-outline
-            "
-          >
-            Add New Price
-          </button>
-        </form>
-      </div>
-</div>
+          <div class="w-full md:w-1/2 px-3">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-last-name"
+            >
+              Time
+            </label>
+            <input
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              id="grid-last-name"
+              name="time"
+              class=""
+              type="text"
+              placeholder="Repair Time"
+            />
+          </div>
+          <div class="w-full md:w-1/2 px-3">
+            <label
+              class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+              for="grid-last-name"
+            >
+              Price
+            </label>
+            <input
+              class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+              name="price"
+              type="text"
+              placeholder="Repair Price"
+            />
+          </div>
+        </div>
+        <button
+          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        >
+          Add New Price
+        </button>
+      </form>
+    </div>
+  </div>
 
-<script src="./pages/pricepage/editiphone5.js"></script>
-
-</body>
-
-</html>
+  <script src="./pages/pricepage/editiphone5.js"></script>
+</main>

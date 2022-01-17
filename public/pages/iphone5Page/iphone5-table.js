@@ -12,7 +12,7 @@ fetch(url)
             // Examine the text in the response  
             response.json().then(function (data) {
 
-                var table = document.createElement("table"), row, cellA, cellB, cellC, cellD, header
+                var table = document.createElement("table"), row, cellA, cellB, cellC, header
                 document.getElementById("demoB").appendChild(table);
 
                 for (let key in data) {

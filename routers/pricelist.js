@@ -70,7 +70,6 @@ router.post('/createiPhone5price', function (req, res) {
     var title = req.body.title;
     var time = req.body.time;
     var price = req.body.price;
-    var phonemodelid = req.body.phonemodelid;
     connection.query("INSERT INTO pricelist (title, time, price, phonemodelid) VALUES (?, ?, ?, 1)", [title.toString(), time.toString(), price.toString()], function (err, result) {
         if (err) throw err;
         console.log("New price added");
@@ -83,7 +82,6 @@ router.post('/createiPhone6price', function (req, res) {
     var title = req.body.title;
     var time = req.body.time;
     var price = req.body.price;
-    var phonemodelid = req.body.phonemodelid;
     connection.query("INSERT INTO pricelist (title, time, price, phonemodelid) VALUES (?, ?, ?, 2)", [title.toString(), time.toString(), price.toString()], function (err, result) {
         if (err) throw err;
         console.log("New price added");
@@ -96,7 +94,6 @@ router.post('/createiPhone7price', function (req, res) {
     var title = req.body.title;
     var time = req.body.time;
     var price = req.body.price;
-    var phonemodelid = req.body.phonemodelid;
     connection.query("INSERT INTO pricelist (title, time, price, phonemodelid) VALUES (?, ?, ?, 3)", [title.toString(), time.toString(), price.toString()], function (err, result) {
         if (err) throw err;
         console.log("New price added");

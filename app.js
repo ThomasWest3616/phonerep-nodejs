@@ -77,11 +77,6 @@ const iphone7Page = createPage("iphone7Page/iphone7.html", {
   title: "Phone-Rep | iPhone 7"
 });
 
-const supportPage = createPage("support/support.html", {
-  title: "Phone-Rep | Support"
-});
-
-
 
 app.get("/contact", (req, res) => {
   res.send(contactPage);
@@ -119,18 +114,18 @@ app.get('/iphone7', function (req, res) {
 });
 
 app.get('/editprices', function (request, response) {
-  
+
   if (request.session.loggedin) {
     response.send(pricePage);
   } else {
     response.send(loginPage);
   }
   response.end();
-  
+
 });
 
 app.get('/editiphone5', function (request, response) {
-  
+
   if (request.session.loggedin) {
     response.send(editIphone5Page);
   } else {
@@ -159,17 +154,14 @@ app.get('/editiphone7', function (request, response) {
   response.end();
 });
 
-app.get('/support', function (req, res) {
-  res.send(supportPage)
-});
 
 app.get('/admin', function (request, response) {
 
 
   if (request.session.loggedin) {
-     response.send(adminPage);
-   } else {
-     response.send(loginPage);
+    response.send(adminPage);
+  } else {
+    response.send(loginPage);
   }
   response.end();
 });
@@ -177,11 +169,11 @@ app.get('/admin', function (request, response) {
 app.get('/phonemodel', function (request, response) {
 
   if (request.session.loggedin) {
-     response.send(phoneModelPage);
-   } else {
-     response.send(loginPage);
-   }
-   response.end();
+    response.send(phoneModelPage);
+  } else {
+    response.send(loginPage);
+  }
+  response.end();
 });
 
 

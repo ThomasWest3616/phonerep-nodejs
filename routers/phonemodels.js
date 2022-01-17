@@ -39,19 +39,4 @@ router.post('/update', (req, res) => {
 
 
 
-
-router.post('/createPhone', function (req, res) {
-    var name = req.body.name;
-    var description = req.body.description;
-    var link = req.body.link;
-    connection.query("INSERT INTO phonemodel (model, img) VALUES (?, ?)", [model.toString(), img.toString()], function (err, result) {
-        if (err) throw err;
-        console.log("New phone model added");
-    });
-    res.redirect("/admin");
-    res.end()
-});
-
-
-
 export default router;
