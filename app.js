@@ -12,7 +12,7 @@ const app = express();
 app.use(session({
   secret: '2C44-4D44-WppQ38S',
   resave: true,
-  saveUninitialized: true
+  saveUninitialized: false
 }));
 
 app.use(express.static("public"));
@@ -199,7 +199,7 @@ app.post('/auth_login', function (request, response) {
 
 app.get('/logout', function (req, res) {
   req.session.destroy();
-  res.send("logout success!");
+  res.redirect("/login")
 });
 
 const PORT = process.env.PORT || 8000;
